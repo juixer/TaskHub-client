@@ -11,7 +11,6 @@ const TaskCard = ({ task }) => {
   } = task;
 
  const handleDragStart =(e,id) => {
-    console.log('drag started', id);
     e.dataTransfer.setData("id", id)
  }
   return (

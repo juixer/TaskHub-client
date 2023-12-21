@@ -62,7 +62,7 @@ const Tasks = () => {
         Swal.fire({
           position: "center",
           icon: "success",
-          title: "Your task is dropped in Ongoing progress",
+          title: "Your task is dropped in To-do progress",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -85,6 +85,28 @@ const Tasks = () => {
           position: "center",
           icon: "success",
           title: "Your task is dropped in Ongoing progress",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      }
+    });
+  };
+
+  const handleCompletedDragOver = (e) => {
+    e.preventDefault();
+  };
+
+  const handleCompletedDrop = (e) => {
+    let id = e.dataTransfer.getData("id");
+    axiosPublic.patch(`/makeCompletedTask/${id}`).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        completedRefetch();
+        todoRefetch();
+        ongoingRefetch();
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your task is dropped in Completed progress",
           showConfirmButton: false,
           timer: 1500,
         });
@@ -124,7 +146,11 @@ const Tasks = () => {
           </div>
         </div>
 
-        <div className="border-2 rounded-xl shadow-xl shadow-lime-200 p-5">
+        <div
+          onDragOver={(e) => handleCompletedDragOver(e)}
+          onDrop={(e) => handleCompletedDrop(e)}
+          className="border-2 rounded-xl shadow-xl shadow-lime-200 p-5"
+        >
           <h1 className="text-3xl font-bold text-center mb-2">
             Completed Tasks
           </h1>
