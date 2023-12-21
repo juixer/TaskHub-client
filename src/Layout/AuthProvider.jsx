@@ -46,12 +46,12 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
-//   user sign out 
+  //   user sign out
 
-const userSignOut = () => {
+  const userSignOut = () => {
     setLoading(true);
     return signOut(auth);
-}
+  };
 
   useEffect(() => {
     const unSubscribed = onAuthStateChanged(auth, (currentUser) => {
@@ -70,7 +70,7 @@ const userSignOut = () => {
     updateUser,
     createUser,
     signInUser,
-    userSignOut
+    userSignOut,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

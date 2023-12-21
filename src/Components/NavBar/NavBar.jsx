@@ -79,7 +79,7 @@ const NavBar = () => {
   );
   return (
     <div className="bg-black bg-opacity-50">
-      <div className="drawer max-w-screen-2xl mx-auto">
+      <div className="drawer z-50 max-w-screen-2xl mx-auto">
         <input id="my-drawer-3" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content flex flex-col">
           {/* Navbar */}
