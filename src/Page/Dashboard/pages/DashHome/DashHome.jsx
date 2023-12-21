@@ -4,6 +4,7 @@ import { FaCheck, FaClock, FaList, FaRegCirclePlay } from "react-icons/fa6";
 import { useQuery } from "@tanstack/react-query";
 import { ClockLoader } from "react-spinners";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
+import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
 
 const DashHome = () => {
   const { user } = useAuth();
@@ -30,6 +31,7 @@ const DashHome = () => {
   }
   return (
     <div className="flex justify-center items-center gap-5 flex-col box">
+      <UseHelmet title={'Dashboard'}/>
       <img className="mask mask-circle w-44" src={user?.photoURL} />
       <h1 className="text-3xl font-bold text-center">{user?.displayName}</h1>
       <Link to={"/dashboard/editProfile"}>

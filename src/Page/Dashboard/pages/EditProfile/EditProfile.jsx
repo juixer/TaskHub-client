@@ -3,6 +3,7 @@ import useAuth from "../../../../Components/hooks/useAuth/useAuth";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
 
 const EditProfile = () => {
   const { user, updateUser } = useAuth();
@@ -48,6 +49,7 @@ const EditProfile = () => {
   };
   return (
     <div>
+        <UseHelmet title={'Edit Profile'}/>
       <h1 className="text-5xl font-bold text-center">Edit Profile</h1>
       <div className="flex mt-5 justify-center items-center gap-5 flex-col">
         <div className="flex w-full justify-center items-center flex-col gap-5">

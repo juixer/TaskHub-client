@@ -5,6 +5,7 @@ import useTodoTask from "../../../../Components/hooks/useTodoTask/useTodoTask";
 import useCompletedTask from "../../../../Components/hooks/useCompletedTask/useCompletedTask";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
+import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
 
 const Tasks = () => {
   const { ongoingPending, ongoingErr, ongoingTasks, ongoingRefetch } =
@@ -115,6 +116,7 @@ const Tasks = () => {
   };
   return (
     <div>
+      <UseHelmet title={'Tasks'}/>
       <h1 className="text-5xl font-bold text-center">Your Tasks</h1>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10">

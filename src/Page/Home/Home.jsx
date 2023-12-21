@@ -1,9 +1,11 @@
 import Banner from "../../Components/Banner/Banner";
 import Container from "../../Components/Container/Container";
+import UseHelmet from "../../Components/hooks/useHelmet/UseHelmet";
 
 const Home = () => {
   return (
     <Container>
+      <UseHelmet title={'Home'}/>
       <div className="mt-16">
         <Banner />
         <h1 className="text-5xl font-bold mb-6 text-center mt-5">

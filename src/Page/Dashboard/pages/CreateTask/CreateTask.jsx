@@ -3,6 +3,7 @@ import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxio
 import useAuth from "../../../../Components/hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
+import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
 
 const CreateTask = () => {
   const {user} =  useAuth()
@@ -44,6 +45,7 @@ const CreateTask = () => {
 
   return (
     <div className="mt-5 space-y-5">
+      <UseHelmet title={'Create Task'}/>
       <h1 className="text-5xl font-bold text-center">Create Your Task</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}

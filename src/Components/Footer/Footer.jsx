@@ -4,8 +4,8 @@ const Footer = () => {
   const date = new Date();
   const year = date.getFullYear();
   return (
-    <div>
-      <footer className="footer p-10  bg-base-300 text-black">
+    <div className=" bg-base-300">
+      <footer className="footer p-10 max-w-screen-2xl mx-auto  text-black">
         <aside>
           <div className="flex-1 px-2 mx-2 text-2xl text-black font-bold">
             My Todo<span className="text-red-500">Hub</span>

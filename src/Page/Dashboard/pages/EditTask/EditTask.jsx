@@ -2,6 +2,7 @@ import { useForm } from "react-hook-form";
 import { useLoaderData, useNavigate } from "react-router-dom";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
+import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
 
 const EditTask = () => {
   const taskDetails = useLoaderData();
@@ -37,6 +38,7 @@ const EditTask = () => {
   };
   return (
     <div className="mt-5 space-y-5">
+      <UseHelmet title={'Edit Task'}/>
       <h1 className="text-5xl font-bold text-center">Update Your Task</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
