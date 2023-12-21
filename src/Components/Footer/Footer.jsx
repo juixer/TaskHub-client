@@ -1,4 +1,3 @@
-import { FaList } from "react-icons/fa6";
 
 const Footer = () => {
   const date = new Date();

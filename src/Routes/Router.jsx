@@ -28,6 +28,12 @@ const Router = createBrowserRouter([
         path: "/register",
         element: <Register />,
       },
+      {
+        path: "/editProfile",
+        element: (
+            <EditProfile />
+        ),
+      },
     ],
   },
   {
@@ -72,12 +78,7 @@ const Router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/editTask/${params.id}`),
       },
-      {
-        path: "/dashboard/editProfile",
-        element: (
-            <EditProfile />
-        ),
-      },
+      
     ],
   },
 ]);

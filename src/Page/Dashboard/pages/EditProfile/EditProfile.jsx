@@ -48,7 +48,7 @@ const EditProfile = () => {
     }
   };
   return (
-    <div>
+    <div className="min-h-[calc(100vh-245px)]">
         <UseHelmet title={'Edit Profile'}/>
       <h1 className="text-5xl font-bold text-center">Edit Profile</h1>
       <div className="flex mt-5 justify-center items-center gap-5 flex-col">

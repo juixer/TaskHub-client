@@ -34,7 +34,7 @@ const DashHome = () => {
       <UseHelmet title={'Dashboard'}/>
       <img className="mask mask-circle w-44" src={user?.photoURL} />
       <h1 className="text-3xl font-bold text-center">{user?.displayName}</h1>
-      <Link to={"/dashboard/editProfile"}>
+      <Link to={"/editProfile"}>
         <button className="btn glass bg-cyan-600 hover:bg-cyan-800  text-white w-full text-lg font-bold">
           Edit Profile
         </button>
