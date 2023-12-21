@@ -23,7 +23,7 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     console.log(data);
-
+    setClicked(true)
     const imgFile = { image: data.image[0] };
     const imgRes = await axios.post(
       `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBBAPI}`,
@@ -40,6 +40,7 @@ const Register = () => {
           updateUser(name, photo)
             .then(() => {
               navigate("/");
+              setClicked(false)
               location.reload();
             })
             .catch((err) => {
@@ -48,6 +49,7 @@ const Register = () => {
         })
         .catch((err) => {
           navigate("/");
+          setClicked(false)
           location.reload();
           console.log(err.message);
         });
