@@ -8,6 +8,7 @@ import DashHome from "../Page/Dashboard/pages/DashHome/DashHome";
 import PrivateRoute from "./PrivateRoute";
 import CreateTask from "../Page/Dashboard/pages/CreateTask/CreateTask";
 import Tasks from "../Page/Dashboard/pages/Tasks/Tasks";
+import EditTask from "../Page/Dashboard/pages/EditTask/EditTask";
 
 const Router = createBrowserRouter([
   {
@@ -59,6 +60,15 @@ const Router = createBrowserRouter([
             <Tasks />
           </PrivateRoute>
         ),
+      },
+      {
+        path: "/dashboard/editTask/:id",
+        element: (
+          <PrivateRoute>
+            <EditTask />
+          </PrivateRoute>
+        ),
+        loader: ({ params}) => fetch(`http://localhost:5000/editTask/${params.id}`) 
       },
     ],
   },

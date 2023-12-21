@@ -4,6 +4,7 @@ import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxio
 import useTodoTask from "../../../../Components/hooks/useTodoTask/useTodoTask";
 import useOngoingTask from "../../../../Components/hooks/useOngoingTask/useOngoingTask";
 import useCompletedTask from "../../../../Components/hooks/useCompletedTask/useCompletedTask";
+import { Link } from "react-router-dom";
 
 const TaskCard = ({ task }) => {
   const {
@@ -121,6 +122,12 @@ const TaskCard = ({ task }) => {
           : ""
       }
     >
+      <figure>
+        <img
+          src="https://i.ibb.co/B6Fm0cM/cardgif.gif"
+          className="opacity-50"
+        />
+      </figure>
       <div className="card-body">
         <div className="flex flex-col">
           <h2 className="text-xl font-bold flex-grow uppercase">{task_name}</h2>
@@ -128,14 +135,16 @@ const TaskCard = ({ task }) => {
             <span className="text-lg">Details</span>: {task_details}
           </p>
           <hr />
-          <p>
-            <span className="text-lg">Deadline Date</span>:{" "}
-            <span className="font-bold">{task_deadline_date}</span>
-          </p>
-          <p>
-            <span className="text-lg">Deadline Time</span>:{" "}
-            <span className="font-bold">{task_deadline_time}</span>
-          </p>
+          <div className="flex flex-col justify-evenly items-center md:flex-row">
+            <p>
+              <span className="text-lg">Deadline Date</span>:{" "}
+              <span className="font-bold">{task_deadline_date}</span>
+            </p>
+            <p>
+              <span className="text-lg">Time</span>:{" "}
+              <span className="font-bold">{task_deadline_time}</span>
+            </p>
+          </div>
           <hr />
           <div className="flex flex-row justify-evenly items-center">
             <p>
@@ -176,10 +185,13 @@ const TaskCard = ({ task }) => {
           </div>
 
           <div className="flex justify-around items-center mt-2">
-            <button className="flex justify-center items-center btn-sm gap-2 btn glass bg-emerald-600 hover:bg-emerald-800 text-lg text-white">
-              <FaPencil />
-              Edit
-            </button>
+            <Link to={`/dashboard/editTask/${_id}`}>
+              <button className="flex justify-center items-center btn-sm gap-2 btn glass bg-emerald-600 hover:bg-emerald-800 text-lg text-white">
+                <FaPencil />
+                Edit
+              </button>
+            </Link>
+
             <button
               onClick={() => handleTaskDelete(_id)}
               className="flex justify-center items-center btn-sm gap-2 btn glass bg-red-600 hover:bg-red-900 text-lg text-white"

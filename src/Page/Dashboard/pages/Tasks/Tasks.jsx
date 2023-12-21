@@ -121,7 +121,7 @@ const Tasks = () => {
         <div
           onDragOver={(e) => handleTodoDragOver(e)}
           onDrop={(e) => handleTodoDrop(e)}
-          className="border-2 rounded-xl shadow-xl shadow-cyan-200 p-5"
+          className="border-2 rounded-xl shadow-xl shadow-cyan-100 p-5"
         >
           <h1 className="text-3xl font-bold text-center mb-2">To-DO</h1>
           <hr className="mx-3" />
@@ -135,9 +135,9 @@ const Tasks = () => {
         <div
           onDragOver={(e) => handleOngoingDragOver(e)}
           onDrop={(e) => handleOngoingDrop(e)}
-          className="border-2 rounded-xl shadow-xl shadow-yellow-200 p-5"
+          className="border-2 rounded-xl shadow-xl shadow-yellow-100 p-5"
         >
-          <h1 className="text-3xl font-bold text-center mb-2">Ongoing Tasks</h1>
+          <h1 className="text-3xl font-bold text-center mb-2">Ongoing</h1>
           <hr className="mx-3" />
           <div className="grid grid-cols-1 gap-5 mt-3">
             {ongoingTasks.map((ongoing) => {
@@ -149,10 +149,10 @@ const Tasks = () => {
         <div
           onDragOver={(e) => handleCompletedDragOver(e)}
           onDrop={(e) => handleCompletedDrop(e)}
-          className="border-2 rounded-xl shadow-xl shadow-lime-200 p-5"
+          className="border-2 rounded-xl shadow-xl shadow-lime-100 p-5"
         >
           <h1 className="text-3xl font-bold text-center mb-2">
-            Completed Tasks
+            Completed
           </h1>
           <hr className="mx-3" />
           <div className="grid grid-cols-1 gap-5 mt-3">
