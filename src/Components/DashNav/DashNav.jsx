@@ -1,20 +1,53 @@
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
+import useAuth from "../hooks/useAuth/useAuth";
 
 const DashNav = () => {
-  const NavLinks =  <>
-    <li>
-      <NavLink to={"/"}>Home</NavLink>
-    </li>
-    <li>
-      <NavLink to={"/dashboard"}>Dashboard</NavLink>
-    </li>
-    <li>
-      <NavLink to={"/createTask"}>Create Task</NavLink>
-    </li>
-    <li>
-      <NavLink to={"/tasks"}>Tasks</NavLink>
-    </li>
-  </>
+  const { userSignOut } = useAuth();
+  const navigate = useNavigate();
+  const handleLogOut = () => {
+    userSignOut()
+      .then(() => {
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Logged out successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate("/");
+      })
+      .catch((err) => {
+        Swal.fire({
+          position: "center",
+          icon: "error",
+          title: `${err.message}`,
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
+  };
+  const NavLinks = (
+    <>
+      <li>
+        <NavLink to={"/"}>Home</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/createTask"}>Create Task</NavLink>
+      </li>
+      <li>
+        <NavLink to={"/tasks"}>Tasks</NavLink>
+      </li>
+      <li>
+        <a onClick={handleLogOut} className="text-white bg-red-500">
+          Logout
+        </a>
+      </li>
+    </>
+  );
 
   return (
     <div className="bg-black bg-opacity-50">

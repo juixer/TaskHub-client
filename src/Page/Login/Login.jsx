@@ -1,7 +1,7 @@
 import Lottie from "lottie-react";
 import loginAni from "../../assets/loginAni.json";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Components/hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
@@ -11,6 +11,7 @@ const Login = () => {
   const { signInUser } = useAuth();
 
     const navigate = useNavigate()
+    const location = useLocation()
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -25,7 +26,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate("/");
+        navigate(location.state ? location.state : '/');
       })
       .catch((err) => {
         Swal.fire({
