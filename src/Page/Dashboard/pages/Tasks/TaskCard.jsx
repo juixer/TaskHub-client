@@ -1,4 +1,4 @@
-import { FaList, FaPencil, FaTrash } from "react-icons/fa6";
+import { FaPencil, FaRegCirclePlay, FaTrash } from "react-icons/fa6";
 import Swal from "sweetalert2";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import useTodoTask from "../../../../Components/hooks/useTodoTask/useTodoTask";
@@ -163,7 +163,7 @@ const TaskCard = ({ task }) => {
               disabled={task_status === "To-do"}
               className="flex w-full justify-center items-center btn-sm gap-2 btn glass bg-cyan-600 hover:bg-cyan-800 text-lg text-white"
             >
-              <FaList />
+              <FaRegCirclePlay />
               To-do
             </button>
             <button

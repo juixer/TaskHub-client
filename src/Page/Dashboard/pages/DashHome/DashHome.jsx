@@ -1,9 +1,33 @@
 import { Link } from "react-router-dom";
 import useAuth from "../../../../Components/hooks/useAuth/useAuth";
-import { FaCheck, FaClock, FaList } from "react-icons/fa6";
+import { FaCheck, FaClock, FaList, FaRegCirclePlay } from "react-icons/fa6";
+import { useQuery } from "@tanstack/react-query";
+import { ClockLoader } from "react-spinners";
+import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 
 const DashHome = () => {
   const { user } = useAuth();
+
+  const { isPending, error, data : count = {} } = useQuery({
+    queryKey: ["counter"],
+    queryFn: async () => {
+    const res = await  axiosPublic.get(`/getCount/${user.email}`)
+    return res.data
+    }
+      
+  });
+
+  if (isPending) {
+    return (
+      <div className="flex justify-center items-center py-44">
+        <ClockLoader color="#36b0d6" />
+      </div>
+    );
+  }
+
+  if (error) {
+    return console.log(error.message);
+  }
   return (
     <div className="flex justify-center items-center gap-5 flex-col box">
       <img className="mask mask-circle w-44" src={user?.photoURL} />
@@ -15,14 +39,17 @@ const DashHome = () => {
       </Link>
       <div className="flex justify-center items-center flex-col md:flex-row gap-5">
         <h1 className="text-lg font-bold flex justify-center items-center gap-1">
-          <FaList /> Total Tasks : <span className="text-sky-500">69</span>
+          <FaList /> Total Tasks : <span className="text-sky-500">{count.taskCountResult}</span>
         </h1>
         <h1 className="text-lg font-bold flex justify-center items-center gap-1">
-          <FaClock /> Ongoing Tasks : <span className="text-orange-500">9</span>
+          <FaRegCirclePlay /> To-do: <span className="text-orange-500">{count.todoCountResult}</span>
         </h1>
         <h1 className="text-lg font-bold flex justify-center items-center gap-1">
-          <FaCheck /> Completed Tasks :{" "}
-          <span className="text-lime-500">60</span>
+          <FaClock /> Ongoing: <span className="text-orange-500">{count.ongoingCountResult}</span>
+        </h1>
+        <h1 className="text-lg font-bold flex justify-center items-center gap-1">
+          <FaCheck /> Completed:{" "}
+          <span className="text-lime-500">{count.completedCountResult}</span>
         </h1>
       </div>
       <div className="flex justify-center items-center gap-5 flex-col md:flex-row">
