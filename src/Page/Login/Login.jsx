@@ -4,8 +4,8 @@ const Login = () => {
   return (
     <div className="min-h-[calc(100vh-155px)]">
       <h1 className="text-5xl font-bold text-center">Log In</h1>
-      <div className="flex justify-center items-center gap-5 rounded-2xl box flex-col md:flex-row">
-        <div className="w-full">
+      <div className="flex mt-10 justify-center items-center gap-5 rounded-2xl box flex-col md:flex-row">
+        <div className="w-[70%]">
           <Lottie animationData={loginAni} loop={true} />
         </div>
         <div className="w-full">
