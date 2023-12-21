@@ -24,7 +24,7 @@ const CreateTask = () => {
       task_deadline_date: data.task_deadline_date,
       task_priority : data.task_priority,
       task_deadline_time: formattedTimeString,
-      task_status : 'Ongoing',
+      task_status : 'to-do',
     }
 
     axiosPublic.post('/tasks', taskInfo)
