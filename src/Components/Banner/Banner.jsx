@@ -11,7 +11,7 @@ const Banner = () => {
       <div className="hero-content text-center text-neutral-content">
         <div className="max-w-lg mx-auto">
           <h1 className="mb-5 text-5xl font-bold leading-snug">
-            Simplify Your Day with TodoHub
+            Simplify Your Day with My TodoHub
           </h1>
           <p className="mb-5 text-xl font-semibold">
             Simplify Your Day: Manage Tasks with Ease and Collaborate in Real

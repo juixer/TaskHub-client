@@ -53,7 +53,7 @@ const NavBar = () => {
               </label>
             </div>
             <div className="flex-1 px-2 mx-2 text-2xl text-white font-bold">
-              Todo<span className="text-red-500">Hub</span>
+             My Todo<span className="text-red-500">Hub</span>
             </div>
             <div className="flex-none hidden lg:block">
               <ul className="menu menu-horizontal text-xl font-semibold text-white space-x-3">
