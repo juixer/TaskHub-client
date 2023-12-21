@@ -6,7 +6,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import useAuth from "../../Components/hooks/useAuth/useAuth";
-import Swal from "sweetalert2";
 
 const Register = () => {
   const [clicked, setClicked] = useState(false);

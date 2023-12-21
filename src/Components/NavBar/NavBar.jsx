@@ -36,9 +36,6 @@ const NavBar = () => {
         <NavLink to={"/dashboard"}>Dashboard</NavLink>
       </li>
       <li>
-        <NavLink to={"/profile"}>Profile</NavLink>
-      </li>
-      <li>
         <NavLink to={"/feedback"}>Feedback</NavLink>
       </li>
       {user ? (
