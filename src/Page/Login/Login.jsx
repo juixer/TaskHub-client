@@ -1,6 +1,7 @@
 import Lottie from "lottie-react";
 import loginAni from "../../assets/loginAni.json";
 import SocialLogin from "../../Components/SocialLogin/SocialLogin";
+import { Link } from "react-router-dom";
 const Login = () => {
   return (
     <div className="min-h-[calc(100vh-155px)]">
@@ -36,6 +37,7 @@ const Login = () => {
             <h1 className="text-center text-2xl font-bold">Login With</h1>
             <SocialLogin />
           </div>
+          <p className="mt-2 text-center">Do not have an account? <Link to={'/register'}><span className="font-bold text-blue-500">Register</span></Link></p>
         </div>
       </div>
     </div>
