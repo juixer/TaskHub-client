@@ -9,6 +9,7 @@ import PrivateRoute from "./PrivateRoute";
 import CreateTask from "../Page/Dashboard/pages/CreateTask/CreateTask";
 import Tasks from "../Page/Dashboard/pages/Tasks/Tasks";
 import EditTask from "../Page/Dashboard/pages/EditTask/EditTask";
+import EditProfile from "../Page/Dashboard/pages/EditProfile/Editprofile";
 
 const Router = createBrowserRouter([
   {
@@ -68,7 +69,14 @@ const Router = createBrowserRouter([
             <EditTask />
           </PrivateRoute>
         ),
-        loader: ({ params}) => fetch(`http://localhost:5000/editTask/${params.id}`) 
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/editTask/${params.id}`),
+      },
+      {
+        path: "/dashboard/editProfile",
+        element: (
+            <EditProfile />
+        ),
       },
     ],
   },
