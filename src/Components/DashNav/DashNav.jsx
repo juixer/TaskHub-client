@@ -1,4 +1,4 @@
-import { NavLink, useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import useAuth from "../hooks/useAuth/useAuth";
 
@@ -30,16 +30,16 @@ const DashNav = () => {
   const NavLinks = (
     <>
       <li>
-        <NavLink to={"/"}>Home</NavLink>
+        <Link to={"/"}>Home</Link>
       </li>
       <li>
-        <NavLink to={"/dashboard"}>Dashboard</NavLink>
+        <Link to={"/dashboard/"}>Dashboard</Link>
       </li>
       <li>
-        <NavLink to={"/createTask"}>Create Task</NavLink>
+        <Link to={"/dashboard/createTask"}>Create Task</Link>
       </li>
       <li>
-        <NavLink to={"/tasks"}>Tasks</NavLink>
+        <Link to={"/dashboard/tasks"}>Tasks</Link>
       </li>
       <li>
         <a onClick={handleLogOut} className="text-white bg-red-500">

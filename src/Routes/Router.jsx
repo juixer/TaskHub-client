@@ -6,6 +6,7 @@ import Register from "../Page/Register/Register";
 import Dashboard from "../Page/Dashboard/Dashboard";
 import DashHome from "../Page/Dashboard/pages/DashHome/DashHome";
 import PrivateRoute from "./PrivateRoute";
+import CreateTask from "../Page/Dashboard/pages/CreateTask/CreateTask";
 
 const Router = createBrowserRouter([
   {
@@ -27,7 +28,7 @@ const Router = createBrowserRouter([
     ],
   },
   {
-    path: "/dashboard",
+    path: "/dashboard/",
     element: (
       <PrivateRoute>
         <Dashboard />
@@ -35,10 +36,18 @@ const Router = createBrowserRouter([
     ),
     children: [
       {
-        path: "/dashboard",
+        path: "/dashboard/",
         element: (
           <PrivateRoute>
             <DashHome />
+          </PrivateRoute>
+        ),
+      },
+      {
+        path: "/dashboard/createTask",
+        element: (
+          <PrivateRoute>
+            <CreateTask />
           </PrivateRoute>
         ),
       },
