@@ -73,23 +73,39 @@ const TaskCard = ({ task }) => {
     });
   };
 
-
   const handleTaskDelete = (id) => {
-    axiosPublic.delete(`/deleteTask/${id}`).then((res) => {
-        if (res.data.modifiedCount > 0) {
-          completedRefetch();
-          todoRefetch();
-          ongoingRefetch();
-          Swal.fire({
-            position: "center",
-            icon: "success",
-            title: "Your task has been deleted",
-            showConfirmButton: false,
-            timer: 1500,
-          });
-        }
-      });
-  }
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosPublic.delete(`/deleteTask/${id}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            completedRefetch();
+            todoRefetch();
+            ongoingRefetch();
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your task has been deleted",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+          }
+        });
+        Swal.fire({
+          title: "Deleted!",
+          text: "Your file has been deleted.",
+          icon: "success",
+        });
+      }
+    });
+  };
 
   return (
     <div
@@ -164,7 +180,10 @@ const TaskCard = ({ task }) => {
               <FaPencil />
               Edit
             </button>
-            <button onClick={()=>handleTaskDelete(_id)} className="flex justify-center items-center btn-sm gap-2 btn glass bg-red-600 hover:bg-red-900 text-lg text-white">
+            <button
+              onClick={() => handleTaskDelete(_id)}
+              className="flex justify-center items-center btn-sm gap-2 btn glass bg-red-600 hover:bg-red-900 text-lg text-white"
+            >
               <FaTrash />
               Delete
             </button>
