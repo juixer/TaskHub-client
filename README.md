@@ -1,8 +1,25 @@
-# React + Vite
+## Summary
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+### Live Link
 
-Currently, two official plugins are available:
+    https://mytodohub.web.app/
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Feature
+
+  - Its all device responsive friendly
+
+  -  User can add their tasks on this website.
+
+  -  User can manage their tasks to Ongoing Completed
+
+  -  User can Update their tasks
+
+  - User can Delete their tasks
+
+  - User can Edit their profile
+
+  - User can see their task count in their dashboard
+
+  - For pc device User can Drag and drop the task to  manage task
+
+  - For tablet and mobile device they will see button by press those butoon user can manage their tasks

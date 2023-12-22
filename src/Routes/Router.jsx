@@ -30,9 +30,7 @@ const Router = createBrowserRouter([
       },
       {
         path: "/editProfile",
-        element: (
-            <EditProfile />
-        ),
+        element: <EditProfile />,
       },
     ],
   },
@@ -76,9 +74,10 @@ const Router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/editTask/${params.id}`),
+          fetch(
+            `https://task-management-server-eta-three.vercel.app/editTask/${params.id}`
+          ),
       },
-      
     ],
   },
 ]);
