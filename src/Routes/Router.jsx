@@ -10,11 +10,13 @@ import CreateTask from "../Page/Dashboard/pages/CreateTask/CreateTask";
 import Tasks from "../Page/Dashboard/pages/Tasks/Tasks";
 import EditTask from "../Page/Dashboard/pages/EditTask/EditTask";
 import EditProfile from "../Page/Dashboard/pages/EditProfile/Editprofile";
+import ErrorPage from "../Page/ErrorPage/ErrorPage";
 
 const Router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/",
@@ -30,7 +32,11 @@ const Router = createBrowserRouter([
       },
       {
         path: "/editProfile",
-        element: <EditProfile />,
+        element: (
+          <PrivateRoute>
+            <EditProfile />
+          </PrivateRoute>
+        ),
       },
     ],
   },
@@ -41,6 +47,7 @@ const Router = createBrowserRouter([
         <Dashboard />
       </PrivateRoute>
     ),
+    errorElement: <ErrorPage />,
     children: [
       {
         path: "/dashboard/",
