@@ -4,11 +4,11 @@ import useAuth from "../../../../Components/hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
 import { useNavigate } from "react-router-dom";
 import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
-
+import { motion } from "framer-motion";
 const CreateTask = () => {
-  const {user} =  useAuth()
+  const { user } = useAuth();
 
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   const { register, handleSubmit } = useForm();
   const onSubmit = (data) => {
@@ -23,29 +23,33 @@ const CreateTask = () => {
       task_name: data.task_name,
       task_details: data.task_details,
       task_deadline_date: data.task_deadline_date,
-      task_priority : data.task_priority,
+      task_priority: data.task_priority,
       task_deadline_time: formattedTimeString,
-      task_status : 'To-do',
-    }
+      task_status: "To-do",
+    };
 
-    axiosPublic.post('/tasks', taskInfo)
-    .then(res => {
-      if(res.data.insertedId){
+    axiosPublic.post("/tasks", taskInfo).then((res) => {
+      if (res.data.insertedId) {
         Swal.fire({
           position: "center",
           icon: "success",
           title: "Your task has been added",
           showConfirmButton: false,
-          timer: 2000
+          timer: 2000,
         });
-        navigate('/dashboard/tasks')
+        navigate("/dashboard/tasks");
       }
-    })
+    });
   };
 
   return (
-    <div className="mt-5 space-y-5">
-      <UseHelmet title={'Create Task'}/>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
+      className="mt-5 space-y-5"
+    >
+      <UseHelmet title={"Create Task"} />
       <h1 className="text-5xl font-bold text-center">Create Your Task</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -97,7 +101,7 @@ const CreateTask = () => {
           <h5 className="font-bold">Task Priority</h5>
           <select
             defaultValue={"Select"}
-            {...register('task_priority')}
+            {...register("task_priority")}
             required
             className="select select-bordered w-full "
           >
@@ -112,7 +116,7 @@ const CreateTask = () => {
           Create
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 

@@ -5,6 +5,7 @@ import useTodoTask from "../../../../Components/hooks/useTodoTask/useTodoTask";
 import useOngoingTask from "../../../../Components/hooks/useOngoingTask/useOngoingTask";
 import useCompletedTask from "../../../../Components/hooks/useCompletedTask/useCompletedTask";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const TaskCard = ({ task }) => {
   const {
@@ -109,7 +110,13 @@ const TaskCard = ({ task }) => {
   };
 
   return (
-    <div
+    <motion.div
+      whileHover={{ scale: 1, rotate: -2 }}
+      whileTap={{
+        scale: 0.8,
+        rotate: -5,
+        borderRadius: "100%",
+      }}
       draggable
       onDragStart={(e) => handleDragStart(e, _id)}
       className={
@@ -202,7 +209,7 @@ const TaskCard = ({ task }) => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

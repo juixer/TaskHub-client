@@ -6,7 +6,7 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useState } from "react";
 import useAuth from "../../Components/hooks/useAuth/useAuth";
-
+import { motion } from "framer-motion";
 const Register = () => {
   const [clicked, setClicked] = useState(false);
   const { createUser, updateUser } = useAuth();
@@ -23,7 +23,7 @@ const Register = () => {
     const email = data.email;
     const password = data.password;
     console.log(data);
-    setClicked(true)
+    setClicked(true);
     const imgFile = { image: data.image[0] };
     const imgRes = await axios.post(
       `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_IMGBBAPI}`,
@@ -40,7 +40,7 @@ const Register = () => {
           updateUser(name, photo)
             .then(() => {
               navigate("/");
-              setClicked(false)
+              setClicked(false);
               location.reload();
             })
             .catch((err) => {
@@ -49,7 +49,7 @@ const Register = () => {
         })
         .catch((err) => {
           navigate("/");
-          setClicked(false)
+          setClicked(false);
           location.reload();
           console.log(err.message);
         });
@@ -58,7 +58,12 @@ const Register = () => {
     }
   };
   return (
-    <div className="min-h-[calc(100vh-155px)]">
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
+      className="min-h-[calc(100vh-155px)]"
+    >
       <h1 className="text-5xl font-bold text-center">Register</h1>
       <div className="flex mt-10 justify-center items-center gap-5 rounded-2xl box flex-col md:flex-row-reverse mb-10">
         <div className="w-[70%]">
@@ -149,7 +154,7 @@ const Register = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

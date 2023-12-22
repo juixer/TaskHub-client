@@ -5,7 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import { ClockLoader } from "react-spinners";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
-
+import { motion } from "framer-motion";
 const DashHome = () => {
   const { user } = useAuth();
 
@@ -30,7 +30,9 @@ const DashHome = () => {
     return console.log(error.message);
   }
   return (
-    <div className="flex justify-center items-center gap-5 flex-col box">
+    <motion.div  initial={{width: 0}} 
+    animate={{width: "100%"}}
+    exit={{x: window.innerWidth}} className="flex justify-center items-center gap-5 flex-col box">
       <UseHelmet title={'Dashboard'}/>
       <img className="mask mask-circle w-44" src={user?.photoURL} />
       <h1 className="text-3xl font-bold text-center">{user?.displayName}</h1>
@@ -66,7 +68,7 @@ const DashHome = () => {
           </button>
         </Link>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

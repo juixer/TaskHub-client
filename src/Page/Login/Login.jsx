@@ -5,13 +5,14 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import useAuth from "../../Components/hooks/useAuth/useAuth";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 const Login = () => {
   const { register, handleSubmit } = useForm();
 
   const { signInUser } = useAuth();
 
-    const navigate = useNavigate()
-    const location = useLocation()
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const onSubmit = (data) => {
     const email = data.email;
@@ -26,7 +27,7 @@ const Login = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        navigate(location.state ? location.state : '/');
+        navigate(location.state ? location.state : "/");
       })
       .catch((err) => {
         Swal.fire({
@@ -39,7 +40,12 @@ const Login = () => {
       });
   };
   return (
-    <div className="min-h-[calc(100vh-155px)]">
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
+      className="min-h-[calc(100vh-155px)]"
+    >
       <h1 className="text-5xl font-bold text-center">Log In</h1>
       <div className="flex mt-10 justify-center items-center gap-5 rounded-2xl box flex-col md:flex-row mb-10">
         <div className="w-[70%]">
@@ -82,7 +88,7 @@ const Login = () => {
           </p>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

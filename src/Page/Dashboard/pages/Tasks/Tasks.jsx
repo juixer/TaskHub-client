@@ -6,6 +6,7 @@ import useCompletedTask from "../../../../Components/hooks/useCompletedTask/useC
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
 import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
+import { motion } from "framer-motion";
 
 const Tasks = () => {
   const { ongoingPending, ongoingErr, ongoingTasks, ongoingRefetch } =
@@ -115,7 +116,9 @@ const Tasks = () => {
     });
   };
   return (
-    <div>
+    <motion.div  initial={{width: 0}} 
+    animate={{width: "100%"}}
+    exit={{x: window.innerWidth}}>
       <UseHelmet title={'Tasks'}/>
       <h1 className="text-5xl font-bold text-center">Your Tasks</h1>
 
@@ -164,7 +167,7 @@ const Tasks = () => {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 };
 

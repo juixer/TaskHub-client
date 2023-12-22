@@ -3,10 +3,10 @@ import { useLoaderData, useNavigate } from "react-router-dom";
 import { axiosPublic } from "../../../../Components/hooks/useAxiosPublic/useAxiosPublic";
 import Swal from "sweetalert2";
 import UseHelmet from "../../../../Components/hooks/useHelmet/UseHelmet";
-
+import { motion } from "framer-motion";
 const EditTask = () => {
   const taskDetails = useLoaderData();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
 
   const onSubmit = (data) => {
@@ -22,23 +22,27 @@ const EditTask = () => {
       task_priority: data.task_priority,
       task_deadline_time: formattedTimeString,
     };
-    axiosPublic.put(`/editTask/${taskDetails._id}`, taskInfo)
-    .then(res => {
-        if(res.data.modifiedCount > 0){
-            navigate('/dashboard/tasks')
-            Swal.fire({
-                position: "center",
-                icon: "success",
-                title: "Your task has been updated",
-                showConfirmButton: false,
-                timer: 2000
-              });
-        }
-    })
+    axiosPublic.put(`/editTask/${taskDetails._id}`, taskInfo).then((res) => {
+      if (res.data.modifiedCount > 0) {
+        navigate("/dashboard/tasks");
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your task has been updated",
+          showConfirmButton: false,
+          timer: 2000,
+        });
+      }
+    });
   };
   return (
-    <div className="mt-5 space-y-5">
-      <UseHelmet title={'Edit Task'}/>
+    <motion.div
+      initial={{ width: 0 }}
+      animate={{ width: "100%" }}
+      exit={{ x: window.innerWidth }}
+      className="mt-5 space-y-5"
+    >
+      <UseHelmet title={"Edit Task"} />
       <h1 className="text-5xl font-bold text-center">Update Your Task</h1>
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -108,7 +112,7 @@ const EditTask = () => {
           Create
         </button>
       </form>
-    </div>
+    </motion.div>
   );
 };
 
